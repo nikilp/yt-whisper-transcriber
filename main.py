@@ -1,6 +1,5 @@
 import csv
 import os
-import pdb
 import subprocess
 import re
 
@@ -107,7 +106,6 @@ def get_video_links(channel_id, filename):
 
 
 def get_playlist_videos(playlist_id, filename):
-    pdb.set_trace()
     videos = scrapetube.get_playlist(playlist_id)
     videos_collection = []
     for video in videos:
