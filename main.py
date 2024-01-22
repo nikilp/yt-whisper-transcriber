@@ -125,10 +125,10 @@ if __name__ == '__main__':
     # model_version = "base"
     # model_version = "small"
     # model_version = "medium"
-    model_version = "large"
+    # model_version = "large"
     # model_version = "large-v2"
     # model_version = "large-v3"
-    # model_version = "large-v3-q5_0"
+    model_version = "large-v3-q5_0"
 
     for channel in channel_list:
         working_directory = os.path.join(output_directory, channel['channel_name'])
