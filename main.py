@@ -67,7 +67,7 @@ def generate_subtitles(video_id, language, title, project_path, model, keep_orig
     if not os.path.isfile(wav_path):
         # Transcode the MP3 file into a 16KHz WAV file
         command = f'ffmpeg -i {mp3_path} -ar 16000 -ac 1 -c:a pcm_s16le {wav_path}'
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(f'zsh -c "{command}"', shell=True, check=True)
 
     if not os.path.isfile(f'{project_path}{title}.srt'):
         # Generate subtitles using the SpeechBrain model
