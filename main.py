@@ -61,7 +61,7 @@ def generate_subtitles(video_id, language, title, project_path, model, keep_orig
             command = f'yt-dlp -xvk --ffmpeg-location /opt/homebrew/bin/ffmpeg -o {mp3_path} --audio-format mp3 https://youtu.be/{video_id}'
         else:
             command = f'yt-dlp -xv --ffmpeg-location /opt/homebrew/bin/ffmpeg -o {mp3_path} --audio-format mp3 https://youtu.be/{video_id}'
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(f'zsh -c "{command}"', shell=True, check=True)
 
     wav_path = os.path.join(project_path, f'{title}.wav')
     if not os.path.isfile(wav_path):
@@ -75,10 +75,10 @@ def generate_subtitles(video_id, language, title, project_path, model, keep_orig
         output_path = os.path.join(project_path, title)
         command = f'./whisper.cpp/main -m {model_path} --output-srt -of {output_path} -f {wav_path} --language {language}'
         try:
-            subprocess.run(command, shell=True, check=True)
+            subprocess.run(f'zsh -c "{command}"', shell=True, check=True)
         except subprocess.CalledProcessError as e:
             setup_whisper_cpp_repo(model)
-            subprocess.run(command, shell=True, check=True)
+            subprocess.run(f'zsh -c "{command}"', shell=True, check=True)
 
 
 def read_video_links(filename):

@@ -1,2 +1,4 @@
 /output/
 /whisper.cpp/
+__pycache__/
+.idea
